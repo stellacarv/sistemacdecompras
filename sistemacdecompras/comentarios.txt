@@ -1,0 +1,90 @@
+=============================================================
+ ATIVIDADE - DESENVOLVIMENTO COM TESTES UNITÁRIOS
+ Cenário 5: Sistema de Carrinho de Compras
+ Aluno: Stella Carvalho
+=============================================================
+
+-------------------------------------------------------------
+1. CICLO DE CRIAÇÃO
+-------------------------------------------------------------
+
+O desenvolvimento seguiu o ciclo de testes unitários:
+escrever o teste → ver falhar → implementar o código → ver passar.
+
+PASSO 1 - Criação da classe Carrinho (carrinho.py)
+A classe foi criada com os seguintes métodos:
+
+  - __init__: inicializa o carrinho com uma lista vazia de itens.
+  - adicionar_item: recebe nome, preço e quantidade e adiciona
+    o item à lista.
+  - remover_item: remove um item da lista pelo nome.
+  - calcular_total: soma o preço x quantidade de todos os itens.
+  - aplicar_desconto: aplica um percentual de desconto ao total,
+    respeitando o limite máximo de 20%. Lança ValueError se o
+    desconto for inválido (negativo ou acima de 20%).
+
+PASSO 2 - Criação dos testes unitários (test_carrinho.py)
+Os testes foram escritos com pytest, organizados em três grupos:
+
+  GRUPO 1 - Soma correta:
+    - test_carrinho_vazio_retorna_zero
+    - test_adicionar_um_item
+    - test_soma_multiplos_itens
+    - test_soma_com_quantidade
+
+  GRUPO 2 - Remoção de item:
+    - test_remover_item
+    - test_remover_item_inexistente_nao_quebra
+    - test_remover_unico_item_deixa_carrinho_vazio
+
+  GRUPO 3 - Aplicação de desconto:
+    - test_desconto_valido
+    - test_desconto_maximo_20_porcento
+    - test_desconto_acima_20_levanta_erro
+    - test_desconto_negativo_levanta_erro
+    - test_desconto_zero_retorna_total_cheio
+
+-------------------------------------------------------------
+2. EXECUÇÃO DOS TESTES - EVIDÊNCIAS
+-------------------------------------------------------------
+
+Comando utilizado para rodar os testes:
+  python -m pytest test_carrinho.py -v --html=relatorio.html
+
+Resultado obtido no terminal:
+  platform win32 -- Python 3.12.10, pytest-9.0.3
+  collected 12 items
+
+  test_carrinho.py::test_carrinho_vazio_retorna_zero       PASSED
+  test_carrinho.py::test_adicionar_um_item                 PASSED
+  test_carrinho.py::test_soma_multiplos_itens              PASSED
+  test_carrinho.py::test_soma_com_quantidade               PASSED
+  test_carrinho.py::test_remover_item                      PASSED
+  test_carrinho.py::test_remover_item_inexistente_nao_quebra PASSED
+  test_carrinho.py::test_remover_unico_item_deixa_carrinho_vazio PASSED
+  test_carrinho.py::test_desconto_valido                   PASSED
+  test_carrinho.py::test_desconto_maximo_20_porcento       PASSED
+  test_carrinho.py::test_desconto_acima_20_levanta_erro    PASSED
+  test_carrinho.py::test_desconto_negativo_levanta_erro    PASSED
+  test_carrinho.py::test_desconto_zero_retorna_total_cheio PASSED
+
+  12 passed in 0.07s
+
+-------------------------------------------------------------
+3. RELATÓRIO HTML
+-------------------------------------------------------------
+
+Foi gerado o arquivo relatorio.html usando o plugin pytest-html.
+O relatório confirma:
+  - 12 testes executados
+  - 12 Passed
+  - 0 Failed
+  - 0 Errors
+
+Comando para instalar o plugin:
+  pip install pytest-html
+
+Comando para gerar o relatório:
+  python -m pytest test_carrinho.py -v --html=relatorio.html
+
+=============================================================
